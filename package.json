@@ -1,0 +1,39 @@
+{
+  "name": "avow-tasks",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt-ts",
+    "build": "nuxt-ts build",
+    "start": "nuxt-ts start",
+    "generate": "nuxt-ts generate",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free-brands": "^5.0.13",
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@nuxt/typescript-runtime": "^2.0.0",
+    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/pwa": "^3.0.2",
+    "@types/jest": "^29.2.6",
+    "@types/node": "^18.11.18",
+    "core-js": "^3.6.5",
+    "node-sass": "^8.0.0",
+    "nuxt": "^2.14.6",
+    "nuxt-fontawesome": "^0.4.0",
+    "vue-kanban": "^1.8.0"
+  },
+  "devDependencies": {
+    "@nuxt/test-utils": "^3.0.0",
+    "@nuxt/types": "^2.14.6",
+    "@nuxt/typescript-build": "^2.0.3",
+    "@vue/test-utils": "^1.0.3",
+    "jest": "^26.4.2",
+    "sass": "^1.57.1",
+    "sass-loader": "^13.2.0",
+    "vue-jest": "^3.0.4",
+    "webpack": "^5.75.0"
+  }
+}
