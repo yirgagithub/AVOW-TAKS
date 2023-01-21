@@ -10,7 +10,7 @@
       </button>
       <br/>
       <client-only>
-        <kanban-board :stages="states" :blocks="tasks">
+        <kanban-board :stages="states" :blocks="tasks" @update-block="updateBlock">
           <div v-for="stage in states" :slot="stage" :key="stage">
             <h2>{{ stage }}</h2>
           </div>
@@ -63,7 +63,7 @@
       },
       data() {
         return {
-          isModalVisible: false,
+          isModalVisible: false
         }
       },
       async fetch({ store }) {
@@ -94,7 +94,11 @@
         async showModal(){
           await this.setTask(0)
           this.isModalVisible = true
-        }
+        },
+        async updateBlock(id: number, status: string) {
+          let task = this.$store.state.tasks.filter((x: Task) => x.id == id)[0]
+          await this.update({id: task.id, title: task.title, description: task.description, priority: task.priority, status: status})
+        },
       },
     });
 </script>

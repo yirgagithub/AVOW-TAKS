@@ -11,7 +11,7 @@
           v-model="title"
           placeholder="Task title"
         />
-        <div style="height:5px" type=""></div>
+        <div v-show="titleError" style="color:red">Title is required</div>
         <textarea type="textArea" v-model="description" placeholder="Describe your task..."></textarea>
         <div style="height:5px" type=""></div>
         <label>Status:&nbsp;&nbsp;</label>
@@ -46,7 +46,7 @@ export default Vue.extend({
   data() {
     let task = this.$store.state.task
     if(task.id == undefined){
-      return {id: 0, title:  '', description: '', status: 'backlog', priority: 'p1'} 
+      return {id: 0, title:  '', description: '', status: 'backlog', priority: 'p1', titleError: false} 
     }
     return {id: task.id, title:  task.title, description: task.description, status: task.status, priority: task.priority};
   },
@@ -54,11 +54,15 @@ export default Vue.extend({
     ...mapActions(["addTask", "updateTask"]),
     onSubmit(e: MouseEvent | KeyboardEvent): void {
       e.preventDefault();
-      this.$emit('close-modal')
-      if(this.id == 0 || this.id == undefined){
+     
+      if(this.title != "" && this.id == 0 || this.id == undefined){
+        this.$emit('close-modal')
         this.addTask({title: this.title, description: this.description, status: this.status, priority:this.priority});
-      }else{
+      }else if(this.title != ""){
+        this.$emit('close-modal')
         this.updateTask({id: this.id, title: this.title, description: this.description, status: this.status, priority:this.priority})
+      }else{
+        this.titleError = true
       }
     },
   },
